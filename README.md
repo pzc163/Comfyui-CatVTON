@@ -38,13 +38,13 @@ for Windows OS
 
 Please download Detectron2 and DensePose zip file in the [Releases](https://github.com/pzc163/Comfyui-CatVTON/releases/tag/Detectron2%26densepose), which includes the code placed under /ComfyUI/python/Lib/site-packages of ComfyUI folder path.
 
-An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, but these are not required for inference on datasets. Install the packages according to your needs.
-
 3. Run the ComfyUI.
 4. Download [`catvton_workflow.json`](https://github.com/pzc163/Comfyui-CatVTON/tree/Detectron2%26densepose/workflow/catvton_workflow.json) and drag it into you ComfyUI webpage and enjoy 😆!
 
 When you run the CatVTON workflow for the first time, the weight files will be automatically downloaded, which usually takes dozens of minutes.
 
+If you need to deploy catVTON in a anaconda environment, you can follow the steps below:
+An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, but these are not required for inference on datasets. Install the packages according to your needs.
 
 ## Reference
 Our code is modified based on https://github.com/Zheng-Chong/CatVTON
