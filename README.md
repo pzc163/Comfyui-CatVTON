@@ -37,7 +37,8 @@ pip install git+https://github.com/facebookresearch/detectron2.git@v0.6#subdirec
 for Windows OS
 
 Please download Detectron2 and DensePose zip file in the [Releases](https://github.com/pzc163/Comfyui-CatVTON/releases/tag/Detectron2%26densepose), which includes the code placed under /ComfyUI/python/Lib/site-packages of ComfyUI folder path.
-
+Notice that Detectron2 and DensePose zip file was compiled under python==3.10 Cuda==12.1 torch==2.1.2 environment if you can't install Detectron2 and DensePose with the released zip file.
+pls pip install Detectron2 and DensePose first as previous linux os install cli shown.
 3. Run the ComfyUI.
 4. Download [`catvton_workflow.json`](https://github.com/pzc163/Comfyui-CatVTON/tree/Detectron2%26densepose/workflow/catvton_workflow.json) and drag it into you ComfyUI webpage and enjoy 😆!
 
