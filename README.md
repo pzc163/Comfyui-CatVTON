@@ -28,17 +28,20 @@ The original GitHub project is https://github.com/Zheng-Chong/CatVTON
 ## Installation
 1. git clone https://github.com/pzc163/Comfyui-CatVTON.git under the ComfyUI-aki-v1.3/custom_nodes path or install https://github.com/pzc163/Comfyui-CatVTON.git according to Comfyui Manager with git URL
 2. install Detectron2 and DensePose
-
-for Linux OS
 ```PowerShell
 pip install git+https://github.com/facebookresearch/detectron2.git@v0.6
 pip install git+https://github.com/facebookresearch/detectron2.git@v0.6#subdirectory=projects/DensePose
 ```
-for Windows OS
-
+For Windows OS users, if you encounter a compilation and installation failure prompt, you can choose between the following two options
+if  python==3.10
 Please download Detectron2 and DensePose zip file in the [Releases](https://github.com/pzc163/Comfyui-CatVTON/releases/tag/Detectron2%26densepose), which includes the code placed under /ComfyUI/python/Lib/site-packages of ComfyUI folder path.
 Notice that Detectron2 and DensePose zip file was compiled under python==3.10 Cuda==12.1 torch==2.1.2 environment if you can't install Detectron2 and DensePose with the released zip file.
-pls pip install Detectron2 and DensePose first as previous linux os install cli shown.
+if  python==3.11
+Please download Detectron2 and DensePose whl file in the [Releases](https://github.com/pzc163/Comfyui-CatVTON/releases/tag/detectron2-0.6%26densepose-0.6), which includes the wheel file under python==3.11,placed under /ComfyUI/python/Lib/site-packages of ComfyUI folder path.
+then open cmd under ./ComfyUI/python/Lib/site-packages/ path
+pip install detectron2-0.6-cp311-cp311-win_amd64.whl
+pip install detectron2_densepose-0.6-py3-none-any.whl
+
 3. Run the ComfyUI.
 4. Download [`catvton_workflow.json`](https://github.com/pzc163/Comfyui-CatVTON/tree/Detectron2%26densepose/workflow/catvton_workflow.json) and drag it into you ComfyUI webpage and enjoy 😆!
 
