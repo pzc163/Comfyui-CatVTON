@@ -2,4 +2,4 @@ __pycache__/
 *.pyc
 *.pyo
 *.egg-info/
-.worktrees/
+.worktrees/.hermes/
