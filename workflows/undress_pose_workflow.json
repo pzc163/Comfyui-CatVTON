@@ -1,0 +1,79 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {"title": "Load Checkpoint"}
+  },
+  "2": {
+    "inputs": {
+      "image": "/home/lamal/Pictures/image.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {"title": "Load Image"}
+  },
+  "3": {
+    "inputs": {
+      "text": "a nude woman on all fours, crawling pose, hands and knees on ground, facing forward, full body view, curvy figure, large breasts, 20% larger breasts, soft skin, bare body, completely naked, no clothes, photorealistic, high quality, studio photography, black background",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "CLIP Text Encode (Positive Prompt)"}
+  },
+  "4": {
+    "inputs": {
+      "text": "clothes, clothing, hoodie, jeans, levis logo, dressed, wearing, text, watermark, deformed, distorted, ugly, bad anatomy, disfigured, low quality, bad proportions, mutation",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "CLIP Text Encode (Negative Prompt)"}
+  },
+  "5": {
+    "inputs": {
+      "seed": 42,
+      "steps": 30,
+      "cfg": 7.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.75,
+      "model": ["1", 0],
+      "positive": ["3", 0],
+      "negative": ["4", 0],
+      "latent_image": ["8", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {"title": "KSampler"}
+  },
+  "6": {
+    "inputs": {
+      "vae_name": "sdxl_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {"title": "Load VAE"}
+  },
+  "7": {
+    "inputs": {
+      "samples": ["5", 0],
+      "vae": ["6", 0]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {"title": "VAE Decode"}
+  },
+  "8": {
+    "inputs": {
+      "pixels": ["2", 0],
+      "vae": ["6", 0]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {"title": "VAE Encode (for img2img)"}
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "undress_pose_test",
+      "images": ["7", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {"title": "Save Image"}
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {"title": "Load Checkpoint"}
+  },
+  "3": {
+    "inputs": {
+      "text": "photorealistic nude woman, completely naked, on all fours crawling pose, hands and knees on ground, facing camera, blonde long hair, full body visible, large breasts 20% bigger, curvy figure, smooth skin, studio photography, black background, high resolution, 8k, masterpiece",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "CLIP Text Encode (Positive)"}
+  },
+  "4": {
+    "inputs": {
+      "text": "clothes, clothing, hoodie, jeans, underwear, bra, text, watermark, deformed fingers, bad anatomy, disfigured, ugly, duplicate, mutation, blurry, low quality, cgi, 3d render, drawing, painting, cartoon",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "CLIP Text Encode (Negative)"}
+  },
+  "5": {
+    "inputs": {
+      "seed": 42,
+      "steps": 30,
+      "cfg": 7.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": ["1", 0],
+      "positive": ["3", 0],
+      "negative": ["4", 0],
+      "latent_image": ["10", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {"title": "KSampler"}
+  },
+  "6": {
+    "inputs": {
+      "vae_name": "sdxl_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {"title": "Load VAE"}
+  },
+  "7": {
+    "inputs": {
+      "samples": ["5", 0],
+      "vae": ["6", 0]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {"title": "VAE Decode"}
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "undress_pose",
+      "images": ["7", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {"title": "Save Image"}
+  },
+  "10": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {"title": "Empty Latent Image"}
+  }
+}
